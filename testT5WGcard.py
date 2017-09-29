@@ -3,7 +3,7 @@ import os
 import ROOT
 
 susy_in = ROOT.TFile('./signalTree_T5WG.root','read')
-n_channels = 18
+n_channels = 36
 syst_names = ['stat','jes','jer','esf','scale','eleshape','jetshape','xs','lumi']
 
 h_SUSYmass = susy_in.Get('SUSYMass')
@@ -22,8 +22,8 @@ for i in range(1, h_SUSYmass.GetXaxis().GetNbins() + 1):
             continue
         file_out = open(
             './counting/counting_t5Wg_'
-            + str(h_SUSYmass.GetXaxis().GetBinCenter(i)) + '_'
-            + str(h_SUSYmass.GetYaxis().GetBinCenter(j)) + '.txt', 'w'
+            + str(int(h_SUSYmass.GetXaxis().GetBinCenter(i))) + '_'
+            + str(int(h_SUSYmass.GetYaxis().GetBinCenter(j))) + '.txt', 'w'
             )
 
         for l in lines:
